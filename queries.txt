@@ -1,0 +1,801 @@
+Provide the count of entries for each status of the main actuator fault in the last month
+SELECT `Main Act Fault St`, COUNT(*) AS Count FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 MONTH GROUP BY `Main Act Fault St`
+
+
+How many times did the DC Voltage drop below 5V in the last week
+SELECT COUNT(*) FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 WEEK AND `DC Voltage` < 5; 
+
+
+What is the total flow measured over the last month?
+SELECT SUM(`Total Flow`) AS TotalFlow FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 MONTH;
+
+
+List all records where the current status was 'Open' in the last 48 hours.
+SELECT * FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 2 DAY AND `Current` = 'Open'
+
+
+List all records where the current status was 'Open' in the last 48 hours.
+SELECT * FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 2 DAY AND `Current` = 'Open';
+
+
+List all records where the current status was 'Open' in the last 48 hours.
+SELECT * FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 2 DAY AND `Current` = 'Open';
+
+
+How many times did the actuator fault status change to 'Fault' in the last week?
+SELECT COUNT(*) FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 WEEK AND `Main Act Fault St` = 'Fault';
+
+
+How many times did the actuator fault status change to 'Fault' in the last week?
+SELECT COUNT(*) FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 WEEK AND `Main Act Fault St` = 'Fault';
+
+
+
+
+--- Entry Logged at 2024-07-11 11:48:58 ---
+Question: How many times did the actuator fault status change to 'Fault' in the last week?
+SQL Query: SELECT COUNT(*) FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 WEEK AND `Main Act Fault St` = 'Fault'; 
+
+
+
+--- Entry Logged at 2024-07-11 11:50:11 ---
+Question: How many times did the actuator fault status change to 'Fault' in the last week?
+SQL Query: SELECT COUNT(*) FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 WEEK AND `Main Act Fault St` = 'Fault';
+
+
+
+--- Entry Logged at 2024-07-11 11:52:23 ---
+Question: How many times did the actuator fault status change to 'Fault' in the last week?
+SQL Query: SELECT COUNT(*) FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 WEEK AND `Main Act Fault St` = 'Fault';
+
+
+
+--- Entry Logged at 2024-07-12 16:42:29 ---
+Question: What is the average drawdown for the last 24 hours?
+SQL Query: SELECT AVG(`Draw Down`) AS AverageDrawDown FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 DAY; 
+
+
+
+--- Entry Logged at 2024-07-12 16:43:14 ---
+Question: What is the total flow measured over the last month?
+SQL Query: SELECT SUM(`Total Flow`) AS TotalFlow FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 MONTH; 
+
+
+
+--- Entry Logged at 2024-07-17 11:51:51 ---
+Question: What is the average turbidity recorded over the last month?
+SQL Query: SELECT AVG(Turbidity) AS AverageTurbidity FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 MONTH; 
+
+
+
+--- Entry Logged at 2024-07-17 12:04:10 ---
+Question: Here are the queries converted into the specified format:  ```json [     {         "input": "What were the statuses of the TW St over the last 24 hours?",         "query": "SELECT `DATE-TIME`, `TW St` FROM `{table}` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 DAY;"     },     {         "input": "How many times did the By Act Fault St status change to 'Fault' in the last week?",         "query": "SELECT COUNT(*) FROM `{table}` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 WEEK AND `By Act Fault St` = 'Fault';"     },     {         "input": "What is the average total flow recorded over the last month?",         "query": "SELECT AVG(`Total Flow`) AS AverageTotalFlow FROM `{table}` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 MONTH;"     },     {         "input": "What was the maximum turbidity level recorded in the last 24 hours?",         "query": "SELECT MAX(`Turbidity`) AS MaxTurbidity FROM `{table}` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 DAY;"     },     {         "input": "How many times did the DC Voltage drop below 0.1V in the last week?",         "query": "SELECT COUNT(*) FROM `{table}` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 WEEK AND `DC Voltgae` < 0.1;"     },     {         "input": "What was the running spring level at the last recorded time?",         "query": "SELECT `Running Spring Level` FROM `{table}` ORDER BY `DATE-TIME` DESC LIMIT 1;"     },     {         "input": "What is the total draw down measured over the last month?",         "query": "SELECT SUM(`Draw Down`) AS TotalDrawDown FROM `{table}` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 MONTH;"     },     {         "input": "What is the average output DC voltage for the last 24 hours?",         "query": "SELECT AVG(`Output DC Voltage`) AS AverageOutputDCVoltage FROM `{table}` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 DAY;"     },     {         "input": "List all records where the `Chlorine` level was greater than 0 in the last 48 hours.",         "query": "SELECT * FROM `{table}` WHERE `DATE-TIME` >= NOW() - INTERVAL 2 DAY AND `Chlorine` > 0;"     },     {         "input": "Provide the count of entries for each status of the By Act Fault St in the last month.",         "query": "SELECT `By Act Fault St`, COUNT(*) AS Count FROM `{table}` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 MONTH GROUP BY `By Act Fault St`;"     } ] ```  Replace `{table}` with your actual table name. These queries should give you useful insights into your dataset based on different criteria.
+SQL Query: SELECT `DATE-TIME`, `TW St` FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 1 DAY; 
+
+
+
+--- Entry Logged at 2024-07-17 12:04:55 ---
+Question: List all records where the `Chlorine` level was greater than 0 in the last 48 hours.
+SQL Query: SELECT * FROM `waterdata` WHERE `DATE-TIME` >= NOW() - INTERVAL 2 DAY AND `Chlorine` > 0; 
+
+
+
+--- Entry Logged at 2024-08-28 11:36:08 ---
+Question: What was the average Chlorine level for each week in April 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(Chlorine) AS avg_chlorine FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-04-30' GROUP BY week;
+
+
+
+--- Entry Logged at 2024-08-28 11:37:04 ---
+Question: "What was the total Total Flow recorded in May 2024?
+SQL Query: SELECT SUM(`Total Flow`) AS total_flow FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31'
+
+
+
+--- Entry Logged at 2024-08-28 11:38:39 ---
+Question: What was the highest OHT Level recorded each week during June 2024?
+SQL Query: ```sql
+SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, MAX(`Running Spring Level`) AS max_running_spring_level
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30'
+GROUP BY week;
+```
+
+
+--- Entry Logged at 2024-08-28 11:40:07 ---
+Question: What was the highest OHT Level recorded each week during June 2024?
+SQL Query: ```sql
+SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, MAX(`Running Spring Level`) AS max_running_spring_level
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30'
+GROUP BY week;
+```
+
+
+--- Entry Logged at 2024-08-28 11:43:21 ---
+Question: What was the minimum Motor Frequency recorded in April, May, and June 2024?
+SQL Query: SELECT MIN(`Current`) AS min_current FROM waterdata WHERE DATE(`DATE-TIME`) BETWEEN '2024-04-01' AND '2024-06-30';
+
+
+
+--- Entry Logged at 2024-08-28 11:45:27 ---
+Question: What was the maximum Motor Frequency recorded in April, May, and June 2024?
+SQL Query: SELECT MAX(`Current`) AS max_current FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+
+
+
+--- Entry Logged at 2024-08-28 11:47:13 ---
+Question: What was the maximum turbidity level recorded in the last 30 days?
+SQL Query: SELECT MAX(Turbidity) AS max_turbidity FROM waterdata WHERE `DATE-TIME` >= CURDATE() - INTERVAL 30 DAY; 
+
+
+
+--- Entry Logged at 2024-08-28 11:47:58 ---
+Question: what was the maximum turbidity level recorded in the month of June 2024?
+SQL Query: ```sql
+SELECT MAX(Turbidity) AS max_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+```
+
+
+--- Entry Logged at 2024-08-28 11:50:21 ---
+Question: "What was the maximum turbidity level recorded in the June?
+SQL Query: SELECT MAX(Turbidity) AS max_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30'
+
+
+
+--- Entry Logged at 2024-08-28 11:51:24 ---
+Question: What was the total turbidity level recorded in the June?
+SQL Query: SELECT SUM(Turbidity) AS total_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+
+--- Entry Logged at 2024-08-28 11:58:36 ---
+Question: quit
+SQL Query: I don't know. 
+
+
+
+--- Entry Logged at 2024-08-28 15:04:22 ---
+Question: What was the total Total Flow recorded in May 2024?
+SQL Query: ```sql
+SELECT SUM(`Total Flow`) AS total_flow FROM waterdata WHERE DATE_FORMAT(`DATE-TIME`, '%Y-%m') = '2024-05';
+```
+
+
+--- Entry Logged at 2024-08-28 15:04:59 ---
+Question: What was the average Turbidity for each month in April, May, and June 2024?
+SQL Query: ```sql
+SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, AVG(Turbidity) AS avg_turbidity
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+GROUP BY month;
+```
+
+
+--- Entry Logged at 2024-08-28 15:05:53 ---
+Question: What was the total Total Flow recorded in May 2024?
+SQL Query: ```sql
+SELECT SUM(`Total Flow`) AS total_flow
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31';
+```
+
+
+--- Entry Logged at 2024-08-28 15:06:13 ---
+Question: What was the total turbidity level recorded in the June?
+SQL Query: SELECT SUM(Turbidity) AS total_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30'
+
+
+
+--- Entry Logged at 2024-08-31 15:08:14 ---
+Question: What was the minimum Motor Frequency recorded in April, May, and June 2024?
+SQL Query: SELECT MIN(`Current`) AS min_current FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+
+
+
+--- Entry Logged at 2024-08-31 15:17:31 ---
+Question: SELECT SUM(Turbidity) AS total_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30'
+SQL Query: SELECT SUM(Turbidity) AS total_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30' 
+
+
+
+--- Entry Logged at 2024-08-31 15:17:56 ---
+Question: What was the total Total Flow recorded in May 2024?
+SQL Query: ```sql
+SELECT SUM(`Total Flow`) AS total_flow FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31';
+```
+
+
+--- Entry Logged at 2024-08-31 15:19:08 ---
+Question:  What was the total Total Flow recorded in May 2024?
+SQL Query: ```sql
+SELECT SUM(`Total Flow`) AS total_flow FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31'
+```
+
+
+--- Entry Logged at 2024-08-31 15:21:38 ---
+Question: what was the average chlorine level for each week in april 2024?
+SQL Query: ```sql
+SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(Chlorine) AS avg_chlorine
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-04-30'
+GROUP BY week;
+```
+
+
+--- Entry Logged at 2024-08-31 15:26:10 ---
+Question: What was the maximum turbidity level recorded in the June?
+SQL Query: SELECT MAX(Turbidity) AS max_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30' 
+
+
+
+--- Entry Logged at 2024-08-31 15:27:17 ---
+Question: What was the total Total Flow recorded in May 2024?
+SQL Query: ```sql
+SELECT SUM(`Total Flow`) AS total_flow FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31';
+```
+
+
+--- Entry Logged at 2024-08-31 15:30:05 ---
+Question: What was the average Chlorine level for each week in April 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(Chlorine) AS avg_chlorine FROM waterdata WHERE DATE_FORMAT(`DATE-TIME`, '%Y-%m') = '2024-04' GROUP BY week; 
+
+
+
+--- Entry Logged at 2024-08-31 15:31:01 ---
+Question: What was the highest OHT Level recorded each week during June 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, MAX(`Running Spring Level`) AS max_running_spring_level FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30' GROUP BY week;
+
+
+
+--- Entry Logged at 2024-08-31 15:59:58 ---
+Question: What was the average Chlorine level for each week in April 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(Chlorine) AS avg_chlorine FROM waterdata WHERE DATE_FORMAT(`DATE-TIME`, '%Y-%m') = '2024-04' GROUP BY week;
+
+
+
+--- Entry Logged at 2024-08-31 16:00:35 ---
+Question: what was the average chlorine level for each week in april 2024?
+SQL Query: ```sql
+SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(Chlorine) AS avg_chlorine
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-04-30'
+GROUP BY week;
+```
+
+
+--- Entry Logged at 2024-08-31 16:04:28 ---
+Question: what was the average chlorine level for each week in april 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(Chlorine) AS avg_chlorine
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-04-30'
+GROUP BY week;
+
+
+--- Entry Logged at 2024-08-31 16:05:24 ---
+Question: What was the total Total Flow recorded in May 2024?
+SQL Query: SELECT SUM(`Total Flow`) AS total_flow FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31';
+
+
+--- Entry Logged at 2024-08-31 16:05:54 ---
+Question: what was the average chlorine level for each week in april 2024?                                             
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(Chlorine) AS avg_chlorine
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-04-30'
+GROUP BY week;
+
+
+--- Entry Logged at 2024-08-31 16:08:32 ---
+Question: what was the average chlorine level for each week in april 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(Chlorine) AS avg_chlorine
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-04-30'
+GROUP BY week;
+
+
+--- Entry Logged at 2024-08-31 16:09:00 ---
+Question: What was the total Total Flow recorded in May 2024?
+SQL Query: SELECT SUM(`Total Flow`) AS total_flow
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31';
+
+
+--- Entry Logged at 2024-08-31 16:15:38 ---
+Question: What is the average TW Rh in June 2024?
+SQL Query: SELECT AVG(`TW Rh`) AS avg_tw_rh FROM waterdata WHERE DATE(`DATE-TIME`) BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-08-31 16:16:12 ---
+Question: What is the maximum Flow Rate in April, May, and June 2024?
+SQL Query: SELECT MAX(`Total Flow`) AS max_flow_rate FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+
+
+--- Entry Logged at 2024-08-31 16:16:38 ---
+Question: What was the highest OHT Level recorded each week during June 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, MAX(`Running Spring Level`) AS max_running_spring_level FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30' GROUP BY week;
+
+
+--- Entry Logged at 2024-08-31 16:16:52 ---
+Question: What is the maximum Flow Rate in April, May, and June 2024?
+SQL Query: SELECT MAX(`Total Flow`) AS max_flow_rate FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+
+
+--- Entry Logged at 2024-08-31 16:18:12 ---
+Question: What was the sum of DC Voltage in June 2024?
+SQL Query: SELECT SUM(`DC Voltage`) AS sum_dc_voltage FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-08-31 16:35:07 ---
+Question: What was the sum of DC Voltage in June 2024?
+SQL Query: SELECT SUM(`DC Voltage`) AS sum_dc_voltage FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30'
+
+
+--- Entry Logged at 2024-08-31 16:42:45 ---
+Question: What was the sum of DC Voltage in June 2024?
+SQL Query: SELECT SUM(`DC Voltage`) AS total_dc_voltage FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30'
+
+
+--- Entry Logged at 2024-08-31 16:43:16 ---
+Question: What was the maximum Draw Down recorded in May 2024?
+SQL Query: SELECT MAX(`Draw Down`) AS max_draw_down FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31';
+
+
+--- Entry Logged at 2024-08-31 16:43:39 ---
+Question: The issue with your query is the use of single quotes around the column names. In SQL, column names should not be enclosed in single quotes. Instead, you should use backticks (`` ` ``) or double quotes (`"`) depending on the database system.
+SQL Query: I don't know.
+
+
+--- Entry Logged at 2024-08-31 16:44:13 ---
+Question: What was the highest Output DC Voltage recorded in April 2024?
+SQL Query: SELECT MAX(`Output DC Voltage`) AS highest_output_dc_voltage
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-04-30';
+
+
+--- Entry Logged at 2024-08-31 16:44:46 ---
+Question: What was the minimum Output DC Voltage recorded in April, May, and June 2024?
+SQL Query: SELECT MIN(`Output DC Voltage`) AS min_output_dc_voltage FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+
+
+--- Entry Logged at 2024-08-31 16:49:18 ---
+Question: What is the average Current recorded each month in April, May, and June 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, AVG(`Current`) AS avg_current FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30' GROUP BY month;
+
+
+--- Entry Logged at 2024-08-31 16:49:35 ---
+Question: What was the total Total Flow recorded each week in April 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, SUM(`Total Flow`) AS total_flow
+FROM waterdata
+WHERE DATE_FORMAT(`DATE-TIME`, '%Y-%m') = '2024-04'
+GROUP BY week;
+
+
+--- Entry Logged at 2024-08-31 16:50:02 ---
+Question: What is the average TW Rh for each day in June 2024?
+SQL Query: SELECT DATE(`DATE-TIME`) AS day, AVG(`TW Rh`) AS avg_tw_rh FROM waterdata WHERE DATE(`DATE-TIME`) BETWEEN '2024-06-01' AND '2024-06-30' GROUP BY day;
+
+
+--- Entry Logged at 2024-08-31 16:50:59 ---
+Question: What was the highest Running Spring Level recorded each month in April, May, and June 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, MAX(`Running Spring Level`) AS max_running_spring_level
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+GROUP BY month;
+
+
+--- Entry Logged at 2024-08-31 18:14:24 ---
+Question: What was the maximum TW L_R status recorded each week in June 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, MAX(`TW L_R`) AS max_tw_l_r FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30' GROUP BY week;
+
+
+--- Entry Logged at 2024-08-31 18:15:23 ---
+Question: can you send me count of total TW L_R status recorded in each week of June 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, COUNT(*) AS total_tw_l_r_status FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30' AND `TW L_R` IS NOT NULL GROUP BY week;
+
+
+--- Entry Logged at 2024-08-31 18:16:39 ---
+Question: can you provide me average DC Voltage on 1st may of 2024?
+SQL Query: SELECT AVG(`DC Voltage`) AS avg_dc_voltage FROM waterdata WHERE DATE(`DATE-TIME`) = '2024-05-01'
+
+
+--- Entry Logged at 2024-08-31 18:17:35 ---
+Question: can you provide me average DC Voltage on 1st august of 2024?
+SQL Query: SELECT AVG(`DC Voltage`) AS avg_dc_voltage FROM waterdata WHERE DATE(`DATE-TIME`) = '2024-08-01';
+
+
+--- Entry Logged at 2024-08-31 18:17:56 ---
+Question: can you provide me average DC Voltage on 1st april of 2024?
+SQL Query: SELECT AVG(`DC Voltage`) AS avg_dc_voltage FROM waterdata WHERE DATE(`DATE-TIME`) = '2024-04-01';
+
+
+--- Entry Logged at 2024-08-31 18:19:17 ---
+Question: What was the average Current in months where the TW St was "Normal" and how does it compare to the average Current in months where the TW St was "Off"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, AVG(`Current`) AS avg_current_normal
+FROM waterdata
+WHERE `TW St` = 'Normal'
+GROUP BY month
+UNION
+SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, AVG(`Current`) AS avg_current_off
+FROM waterdata
+WHERE `TW St` = 'Off'
+GROUP BY month;
+
+
+--- Entry Logged at 2024-08-31 18:21:02 ---
+Question: What is the maximum Turbidity recorded in days where the Draw Down was above the average Draw Down for April, May, and June 2024?
+SQL Query: SELECT MAX(Turbidity) AS max_turbidity
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+AND DrawDown > (SELECT AVG(DrawDown) FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30');
+
+
+--- Entry Logged at 2024-08-31 18:21:49 ---
+Question: What was the total Total Flow on days when the DC Voltage was below the median DC Voltage, compared to days when it was above the median?
+SQL Query: SELECT DATE(`DATE-TIME`) AS `Date`, SUM(`Total Flow`) AS `Total Flow`
+FROM waterdata
+WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 MONTH
+GROUP BY `Date`
+ORDER BY `Date`;
+
+
+--- Entry Logged at 2024-08-31 18:22:10 ---
+Question: For each month, what is the total Total Flow on days where the TW L_R status was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, SUM(CASE WHEN `TW L_R` = 'Fault' THEN `Total Flow` ELSE 0 END) AS fault_flow, SUM(CASE WHEN `TW L_R` != 'Fault' THEN `Total Flow` ELSE 0 END) AS non_fault_flow
+FROM waterdata
+WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 YEAR
+GROUP BY month;
+
+
+--- Entry Logged at 2024-08-31 18:25:49 ---
+Question: What was the highest Running Spring Level recorded on days when Main Act Fault St was "Fault" versus days when it was not "Fault"?
+SQL Query: SELECT MAX(`Running Spring Level`) AS max_running_spring_level, `Main Act Fault St`
+FROM waterdata
+WHERE `DATE-TIME` = (SELECT MAX(`DATE-TIME`) FROM waterdata)
+GROUP BY `Main Act Fault St`;
+
+
+--- Entry Logged at 2024-08-31 18:28:35 ---
+Question: What is the average Chlorine level on days when Draw Down was in the top 10% and Static Spring Level was in the bottom 10%?
+SQL Query: SELECT AVG(Chlorine) AS avg_chlorine
+FROM waterdata
+WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 DAY
+AND `Draw Down` >= (SELECT PERCENTILE_CONT(0.9) WITHIN GROUP (ORDER BY `Draw Down`) FROM waterdata WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 DAY)
+AND `Static Spring Level` <= (SELECT PERCENTILE_CONT(0.1) WITHIN GROUP (ORDER BY `Static Spring Level`) FROM waterdata WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 DAY);
+
+
+--- Entry Logged at 2024-08-31 18:44:05 ---
+Question: What was the highest Running Spring Level recorded on days when the Current was in the top 10% of its values?
+SQL Query: SELECT MAX(`Running Spring Level`) AS max_running_spring_level
+FROM waterdata
+WHERE `Current` >= (SELECT PERCENTILE_CONT(0.9) WITHIN GROUP (ORDER BY `Current`) FROM waterdata);
+
+
+--- Entry Logged at 2024-08-31 18:44:32 ---
+Question: What was the highest Running Spring Level recorded on days when Main Act Fault St was "Fault" versus days when it was not "Fault"?
+SQL Query: SELECT MAX(`Running Spring Level`) AS max_running_spring_level, `Main Act Fault St`
+FROM waterdata
+WHERE `DATE-TIME` = (SELECT MAX(`DATE-TIME`) FROM waterdata)
+GROUP BY `Main Act Fault St`;
+
+
+--- Entry Logged at 2024-09-02 10:09:21 ---
+Question: What was the highest Draw Down in May 2024?
+SQL Query: SELECT MAX(`Draw Down`) AS max_draw_down FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31';
+
+
+--- Entry Logged at 2024-09-02 10:09:58 ---
+Question: What was the average DC Voltage for each week in May 2024?
+SQL Query: SELECT WEEK(`DATE-TIME`) AS week_number, AVG(`DC Voltage`) AS avg_dc_voltage
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31'
+GROUP BY week_number;
+
+
+--- Entry Logged at 2024-09-02 10:10:38 ---
+Question: What was the average Current in months where the TW St was "Normal" and how does it compare to the average Current in months where the TW St was "Off"?
+SQL Query: SELECT 
+    DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month,
+    AVG(CASE WHEN `TW St` = 'Normal' THEN `Current` ELSE NULL END) AS avg_current_normal,
+    AVG(CASE WHEN `TW St` = 'Off' THEN `Current` ELSE NULL END) AS avg_current_off
+FROM waterdata
+WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 YEAR
+GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:11:55 ---
+Question: What is the maximum Turbidity recorded in days where the Draw Down was above the average Draw Down for April, May, and June 2024?
+SQL Query: SELECT MAX(Turbidity) AS max_turbidity
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+AND DrawDown > (SELECT AVG(DrawDown) FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30');
+
+
+--- Entry Logged at 2024-09-02 10:15:33 ---
+Question: For each month, what is the total Total Flow on days where the TW L_R status was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, SUM(CASE WHEN `TW L_R` = 'Fault' THEN `Total Flow` ELSE 0 END) AS fault_flow, SUM(CASE WHEN `TW L_R` != 'Fault' THEN `Total Flow` ELSE 0 END) AS non_fault_flow FROM waterdata WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 YEAR GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:16:15 ---
+Question: For each month, what was the average DC Voltage on days when the By Act Fault St status was "Fault" compared to days when it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, 
+       AVG(CASE WHEN `By Act Fault St` = 'Fault' THEN `DC Voltage` ELSE NULL END) AS avg_dc_voltage_fault,
+       AVG(CASE WHEN `By Act Fault St` != 'Fault' THEN `DC Voltage` ELSE NULL END) AS avg_dc_voltage_not_fault
+FROM waterdata
+WHERE `DATE-TIME` >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:17:02 ---
+Question: What was the sum of Chlorine on days when the Main Act Open St status was "Open" and how does it compare to the sum of Chlorine on days when it was "Closed"?
+SQL Query: SELECT SUM(CASE WHEN `Main Act Open St` = 'Open' THEN Chlorine ELSE 0 END) AS `Open Chlorine`, SUM(CASE WHEN `Main Act Open St` = 'Closed' THEN Chlorine ELSE 0 END) AS `Closed Chlorine` FROM waterdata;
+
+
+--- Entry Logged at 2024-09-02 10:17:53 ---
+Question: What was the highest Turbidity recorded in weeks where the average Current was above the median Current value for the entire period?
+SQL Query: SELECT MAX(Turbidity) AS max_turbidity
+FROM waterdata
+WHERE `DATE-TIME` IN (
+  SELECT `DATE-TIME`
+  FROM waterdata
+  WHERE `DATE-TIME` >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+  GROUP BY DATE_FORMAT(`DATE-TIME`, '%Y-%u')
+  HAVING AVG(`Current`) > (
+    SELECT AVG(`Current`)
+    FROM waterdata
+    WHERE `DATE-TIME` >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+  )
+);
+
+
+--- Entry Logged at 2024-09-02 10:18:55 ---
+Question: What was the average Draw Down on days when both TW Ol St was "Remote" and TW St was "Normal"?
+SQL Query: SELECT AVG(`Draw Down`) AS avg_draw_down
+FROM waterdata
+WHERE `TW Ol St` = 'Remote' AND `TW St` = 'Normal';
+
+
+--- Entry Logged at 2024-09-02 10:21:17 ---
+Question: For each month, what was the maximum Static Spring Level on days when By Act Close St was "Close" versus days when it was not "Close"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month,
+       MAX(CASE WHEN `By Act Close St` = 'Close' THEN `Static Spring Level` ELSE NULL END) AS max_static_spring_level_close,
+       MAX(CASE WHEN `By Act Close St` <> 'Close' THEN `Static Spring Level` ELSE NULL END) AS max_static_spring_level_not_close
+FROM waterdata
+GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:22:12 ---
+Question: What was the sum of Turbidity recorded in June 2024?
+SQL Query: SELECT SUM(Turbidity) AS sum_turbidity
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-09-02 10:22:29 ---
+Question: What was the maximum Static Spring Level in June 2024?
+SQL Query: SELECT MAX(`Static Spring Level`) AS max_static_spring_level FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-09-02 10:22:47 ---
+Question: What is the average TW Rh for each day in June 2024?
+SQL Query: SELECT DATE(`DATE-TIME`) AS day, AVG(`TW Rh`) AS avg_tw_rh FROM waterdata WHERE DATE(`DATE-TIME`) BETWEEN '2024-06-01' AND '2024-06-30' GROUP BY day;
+
+
+--- Entry Logged at 2024-09-02 10:23:45 ---
+Question: What was the total Current recorded in June 2024?
+SQL Query: SELECT SUM(`Current`) AS total_current FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-09-02 10:24:17 ---
+Question: What is the highest Output DC Voltage recorded each month in April, May, and June 2024?
+SQL Query: SELECT MONTH(`DATE-TIME`) AS month, MAX(`Output DC Voltage`) AS max_output_dc_voltage
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:24:53 ---
+Question: What is the sum of Total Flow by day in May 2024?
+SQL Query: SELECT DATE(`DATE-TIME`) AS day, SUM(`Total Flow`) AS sum_total_flow
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31'
+GROUP BY day;
+
+
+--- Entry Logged at 2024-09-02 10:25:38 ---
+Question: What was the highest Chlorine level recorded each month in April, May, and June 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, MAX(Chlorine) AS max_chlorine
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:26:09 ---
+Question: What is the average Static Spring Level by week in May 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(`Static Spring Level`) AS avg_static_spring_level
+FROM waterdata
+WHERE DATE(`DATE-TIME`) BETWEEN '2024-05-01' AND '2024-05-31'
+GROUP BY week;
+
+
+--- Entry Logged at 2024-09-02 10:26:46 ---
+Question: What was the sum of Turbidity recorded in June 2024?
+SQL Query: SELECT SUM(Turbidity) AS sum_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-09-02 10:27:35 ---
+Question: For each month, what is the maximum Turbidity on days where the TW L_R was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, MAX(CASE WHEN `TW L_R` = 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_fault, MAX(CASE WHEN `TW L_R` != 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_not_fault FROM waterdata GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:28:53 ---
+Question: For each month, what is the maximum Turbidity on days where the TW L_R was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, MAX(CASE WHEN `TW L_R` = 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_fault, MAX(CASE WHEN `TW L_R` != 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_not_fault FROM waterdata GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:46:55 ---
+Question: For each month, what is the maximum Turbidity on days where the TW L_R was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, MAX(CASE WHEN `TW L_R` = 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_fault, MAX(CASE WHEN `TW L_R` != 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_not_fault FROM waterdata GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:47:55 ---
+Question: For each month, what is the maximum Turbidity on days where the TW L_R was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, MAX(CASE WHEN `TW L_R` = 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_fault, MAX(CASE WHEN `TW L_R` != 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_not_fault FROM waterdata GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:50:07 ---
+Question: For each month, what is the maximum Turbidity on days where the TW L_R was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, MAX(CASE WHEN `TW L_R` = 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_fault, MAX(CASE WHEN `TW L_R` != 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_not_fault FROM waterdata GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 10:50:22 ---
+Question: For each month, what is the maximum Turbidity on days where the TW L_R was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, MAX(CASE WHEN `TW L_R` = 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_fault, MAX(CASE WHEN `TW L_R` != 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_not_fault FROM waterdata GROUP BY month
+
+
+--- Entry Logged at 2024-09-02 10:51:18 ---
+Question: For each month, what is the maximum Turbidity on days where the TW L_R was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, MAX(CASE WHEN `TW L_R` = 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_fault, MAX(CASE WHEN `TW L_R` != 'Fault' THEN Turbidity ELSE NULL END) AS max_turbidity_not_fault FROM waterdata GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 11:37:21 ---
+Question: What was the sum of Turbidity recorded in June 2024?
+SQL Query: SELECT SUM(Turbidity) AS sum_turbidity
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-09-02 11:38:21 ---
+Question: What was the sum of Turbidity recorded in June 2024?
+SQL Query: SELECT SUM(Turbidity) AS sum_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-09-02 11:39:05 ---
+Question: What was the sum of Turbidity recorded in June 2024?
+SQL Query: SELECT SUM(Turbidity) AS total_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-09-02 11:44:49 ---
+Question: What was the sum of Turbidity recorded in June 2024?
+SQL Query: SELECT SUM(Turbidity) AS total_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-09-02 11:47:51 ---
+Question: What was the sum of Turbidity recorded in June 2024?
+SQL Query: SELECT SUM(Turbidity) AS sum_turbidity
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-09-02 11:48:36 ---
+Question: What is the maximum Turbidity recorded in days where the Draw Down was above the average Draw Down for April, May, and June 2024?
+SQL Query: SELECT MAX(Turbidity) AS max_turbidity
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30'
+AND DrawDown > (SELECT AVG(DrawDown) FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-04-01' AND '2024-06-30');
+
+
+--- Entry Logged at 2024-09-02 11:48:59 ---
+Question: What is the average Static Spring Level by week in May 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(`Static Spring Level`) AS avg_static_spring_level
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31'
+GROUP BY week;
+
+
+--- Entry Logged at 2024-09-02 11:50:18 ---
+Question: What is the average Static Spring Level by week in May 2024?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%u') AS week, AVG(`Static Spring Level`) AS avg_static_spring_level
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31'
+GROUP BY week;
+
+
+--- Entry Logged at 2024-09-02 11:54:49 ---
+Question: What was the maximum Static Spring Level in June 2024?
+SQL Query: SELECT MAX(`Static Spring Level`) AS max_static_spring_level FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30'
+
+
+--- Entry Logged at 2024-09-02 11:55:26 ---
+Question: What is the sum of Total Flow by day in May 2024?
+SQL Query: SELECT DATE(`DATE-TIME`) AS day, SUM(`Total Flow`) AS total_flow
+FROM waterdata
+WHERE `DATE-TIME` BETWEEN '2024-05-01' AND '2024-05-31'
+GROUP BY day;
+
+
+--- Entry Logged at 2024-09-02 11:56:32 ---
+Question: What was the average Current in months where the TW St was "Normal" and how does it compare to the average Current in months where the TW St was "Off"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, AVG(`Current`) AS avg_current,
+       CASE WHEN `TW St` = 'Normal' THEN 'Normal' ELSE 'Off' END AS tw_status
+FROM waterdata
+WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 YEAR
+GROUP BY month, tw_status
+ORDER BY month, tw_status;
+
+
+--- Entry Logged at 2024-09-02 11:58:29 ---
+Question: What was the sum of Chlorine on days when the Main Act Open St status was "Open" and how does it compare to the sum of Chlorine on days when it was "Closed"?
+SQL Query: SELECT SUM(CASE WHEN `Main Act Open St` = 'Open' THEN Chlorine ELSE 0 END) AS sum_chlorine_open, SUM(CASE WHEN `Main Act Open St` = 'Closed' THEN Chlorine ELSE 0 END) AS sum_chlorine_closed FROM waterdata WHERE DATE(`DATE-TIME`) = CURDATE();
+
+
+--- Entry Logged at 2024-09-02 12:05:45 ---
+Question: What was the sum of Chlorine on days when the Main Act Open St status was "Open" and how does it compare to the sum of Chlorine on days when it was "Closed"?
+SQL Query: SELECT SUM(CASE WHEN `Main Act Open St` = 'Open' THEN Chlorine ELSE 0 END) AS open_chlorine, SUM(CASE WHEN `Main Act Open St` = 'Closed' THEN Chlorine ELSE 0 END) AS closed_chlorine FROM waterdata;
+
+
+--- Entry Logged at 2024-09-02 12:10:17 ---
+Question: For each month, what is the total Total Flow on days where the TW L_R status was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month,
+       SUM(CASE WHEN `TW L_R` = 'Fault' THEN `Total Flow` ELSE 0 END) AS total_flow_fault,
+       SUM(CASE WHEN `TW L_R` != 'Fault' THEN `Total Flow` ELSE 0 END) AS total_flow_not_fault
+FROM waterdata
+WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 YEAR
+GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 12:19:51 ---
+Question: For each month, what was the maximum Static Spring Level on days when By Act Close St was "Close" versus days when it was not "Close"?
+SQL Query: SELECT MONTH(`DATE-TIME`) AS month, 
+       MAX(CASE WHEN `By Act Close St` = 'Close' THEN `Static Spring Level` END) AS max_static_spring_level_close,
+       MAX(CASE WHEN `By Act Close St` != 'Close' THEN `Static Spring Level` END) AS max_static_spring_level_not_close
+FROM waterdata
+GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 12:20:15 ---
+Question: What was the sum of Chlorine on days when the Main Act Open St status was "Open" and how does it compare to the sum of Chlorine on days when it was "Closed"?
+SQL Query: SELECT SUM(CASE WHEN `Main Act Open St` = 'Open' THEN Chlorine ELSE 0 END) AS open_chlorine, SUM(CASE WHEN `Main Act Open St` = 'Closed' THEN Chlorine ELSE 0 END) AS closed_chlorine FROM waterdata;
+
+
+--- Entry Logged at 2024-09-02 12:20:36 ---
+Question: For each month, what was the average DC Voltage on days when the By Act Fault St status was "Fault" compared to days when it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month,
+       AVG(CASE WHEN `By Act Fault St` = 'Fault' THEN `DC Voltage` ELSE NULL END) AS avg_dc_voltage_fault,
+       AVG(CASE WHEN `By Act Fault St` != 'Fault' THEN `DC Voltage` ELSE NULL END) AS avg_dc_voltage_not_fault
+FROM waterdata
+WHERE `DATE-TIME` >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 12:21:48 ---
+Question: For each month, what is the total Total Flow on days where the TW L_R status was "Fault" compared to days where it was not "Fault"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month,
+       SUM(CASE WHEN `TW L_R` = 'Fault' THEN `Total Flow` ELSE 0 END) AS total_flow_fault,
+       SUM(CASE WHEN `TW L_R` != 'Fault' THEN `Total Flow` ELSE 0 END) AS total_flow_not_fault
+FROM waterdata
+WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 YEAR
+GROUP BY month;
+
+
+--- Entry Logged at 2024-09-02 12:22:13 ---
+Question: What was the average Current in months where the TW St was "Normal" and how does it compare to the average Current in months where the TW St was "Off"?
+SQL Query: SELECT DATE_FORMAT(`DATE-TIME`, '%Y-%m') AS month, AVG(`Current`) AS avg_current,
+       CASE
+           WHEN `TW St` = 'Normal' THEN 'Normal'
+           WHEN `TW St` = 'Off' THEN 'Off'
+           ELSE 'Other'
+       END AS tw_status
+FROM waterdata
+WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 YEAR
+GROUP BY month, tw_status
+ORDER BY month, tw_status;
