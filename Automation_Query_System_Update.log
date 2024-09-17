@@ -1858,3 +1858,35 @@ LLM Output: - The average Current in months where the TW St was "Off" was **77.6
 --- End of Entry ---
 
 
+2024-09-17 11:11:25 :: INFO :: Loading faiss with AVX2 support.
+2024-09-17 11:11:25 :: INFO :: Successfully loaded faiss with AVX2 support.
+2024-09-17 11:11:28 :: INFO :: 
+
+--- Entry Logged at 2024-09-17 11:11:28 ---
+
+Question Asked: What was the sum of Turbidity recorded in June 2024?
+
+Query Generated: SELECT SUM(Turbidity) AS total_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+LLM Output: [(1526857.8200000462,)]
+
+LLM Output: The total turbidity recorded in June 2024 was **1,526,857.82**. 
+
+--- End of Entry ---
+
+
+2024-09-17 11:12:40 :: INFO :: 
+
+--- Entry Logged at 2024-09-17 11:12:40 ---
+
+Question Asked: What was the sum of Turbidity recorded in June 2024?
+
+Query Generated: SELECT SUM(Turbidity) AS sum_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+LLM Output: [(1526857.8200000462,)]
+
+LLM Output: The total Turbidity recorded in June 2024 was **1526857.82**. 
+
+--- End of Entry ---
+
+

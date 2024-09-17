@@ -799,3 +799,13 @@ FROM waterdata
 WHERE `DATE-TIME` >= CURDATE() - INTERVAL 1 YEAR
 GROUP BY month, tw_status
 ORDER BY month, tw_status;
+
+
+--- Entry Logged at 2024-09-17 11:11:27 ---
+Question: What was the sum of Turbidity recorded in June 2024?
+SQL Query: SELECT SUM(Turbidity) AS total_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+--- Entry Logged at 2024-09-17 11:12:40 ---
+Question: What was the sum of Turbidity recorded in June 2024?
+SQL Query: SELECT SUM(Turbidity) AS sum_turbidity FROM waterdata WHERE `DATE-TIME` BETWEEN '2024-06-01' AND '2024-06-30';

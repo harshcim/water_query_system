@@ -78,7 +78,7 @@ greetings = ["hello", "hi", "hey", "howdy", "greetings", "yo", "sup", "hiya", "h
 
 llm = ChatGoogleGenerativeAI(
     model="gemini-1.5-flash-latest",
-    temperature=0.5,
+    temperature=0.8,
     max_output_tokens=8192,
     google_api_key=os.getenv("GOOGLE_API_KEY")  
 )
@@ -93,6 +93,27 @@ def clean_query(query):
     return clean_query
 
 
+
+# def preprocess_answer(answer):
+#     pattern = r'\*\*(.*?)\*\*'
+#     answer = re.sub(pattern, r'<b>\1</b>', answer)
+#     answer = answer.replace('* ', '● ')
+#     return answer
+
+def preprocess_answer(answer):
+    # Convert bold text marked with '**text**' to HTML <b> tags
+    answer = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', answer)
+    
+    # Convert list items marked with '* ' to bullet points
+    answer = re.sub(r'\*\s+', '● ', answer)
+    
+    # Ensure proper spacing after bullet points
+    answer = re.sub(r'●\s+', '● ', answer)
+    
+    # Convert newlines to HTML <br> tags for proper line breaks
+    answer = answer.replace('\n', '<br>')
+    
+    return answer
 
 
 
@@ -241,7 +262,7 @@ def main():
         }
         </style>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html = True
     )
 
 
@@ -257,12 +278,15 @@ def main():
             time.sleep(2)
             response, result, execution_time = get_response(llm, embeddings, user_input)
         
+        # Process the response using preprocess_answer
+        processed_response = preprocess_answer(response)        
+        
         # Display the response
-        st.markdown(f"<div class='response-bubble'>{response}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='response-bubble'>{processed_response}</div>", unsafe_allow_html=True)
         st.markdown(f"**Query Execution Time:** {execution_time:.2f} seconds")
         
         # Download Option for Results
-        st.download_button("Download Results", response, file_name="query_results.txt")
+        st.download_button("Download Results", processed_response, file_name="query_results.txt")
 
         # Feedback Mechanism
         st.markdown("### Was this response helpful?")
